@@ -1,20 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ExampleComponent from './components/exampleComponent'
-import PropsDisplayer from './components/PropsDisplayer'
-import City from './components/City'
-import Pet from './components/Pet'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import ExampleComponent from "./components/exampleComponent";
+import PropsDisplayer from "./components/PropsDisplayer";
+import City from "./components/City";
+import Pet from "./components/Pet";
+import FullName from "./components/Name";
+import ComplexComment from "./components/ComplexComment";
+import Comment from "./components/Comment";
+import Callout from "./components/Callout";
+import MoviesList from "./components/MoviesList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  const spiderman = {name: 'Siderman', alterEgo: 'Peter Parker', catchPhrase: 'With great power comes great responsibility'};
-  const spidyJSX = (<>
-  <h3>{spiderman.name}</h3>
-  <blockquote>{spiderman.catchPhrase}</blockquote>
-  <cite>{spiderman.alterEgo}</cite></>)
+  const spiderman = {
+    name: "Siderman",
+    alterEgo: "Peter Parker",
+    catchPhrase: "With great power comes great responsibility",
+  };
+  const spidyJSX = (
+    <>
+      <h3>{spiderman.name}</h3>
+      <blockquote>{spiderman.catchPhrase}</blockquote>
+      <cite>{spiderman.alterEgo}</cite>
+    </>
+  );
+
+  // object storing comment data - passed as props
+  const comment = {
+    date: new Date(),
+    text: "I hope you enjoy learning React!",
+    author: {
+      // author is also an object
+      name: "Hello Kitty",
+      avatarUrl: "https://placekitten.com/g/64/64",
+    },
+  };
 
   return (
     <>
@@ -38,15 +61,37 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      {spidyJSX}
-      <ExampleComponent name='Cool Dude' />
-      <PropsDisplayer/>
+      {/* {spidyJSX}
+      <ExampleComponent name="Cool Dude" />
+      <PropsDisplayer />
       <City>
-        <div>Newcastle is a harbour cit in the Australian state of New South Wales.</div>
+        <div>
+          Newcastle is a harbour cit in the Australian state of New South Wales.
+        </div>
       </City>
-      <Pet type='cat' name = 'Shadow' colour = 'Black' />
+      <Pet type="cat" name="Shadow" colour="Black" />
+
+      <FullName first="Jamie" last="Lamar" />
+      <ComplexComment
+        author={comment.author}
+        date={comment.date}
+        text={comment.text}
+      />
+      <Comment
+        author={comment.author}
+        date={comment.date}
+        text={comment.text}
+      />
+      <Callout
+        title="Nested React Component"
+        message="Simple message with a fancy box applied via composition"
+      >
+        <FullName first="Elon" last="Musk" />
+      </Callout> */}
+
+      <MoviesList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
