@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function MoviesList(props) {
   const movies = [
     {
@@ -20,11 +22,25 @@ function MoviesList(props) {
     },
   ];
 
-  const moviesItems = movies.map((movie, index) => <li key={index}>{movie.title}</li>);
-
+  const [currentMovies, setCurrentMovies] = useState(movies);
+  const movieItems = currentMovies.map((movie) => (
+    <Movie
+      key={movie.id}
+      title={movie.title}
+      year={movie.year}
+      synopsis={movie.synopsis}
+    />
+  ));
+  const handleReverseMovies = () => {
+    
+    let newMovies = [...currentMovies];
+    newMovies.reverse(); 
+    setCurrentMovies(newMovies); 
+  };
   return (
-    <div>
-      <ul>{moviesItems}</ul>
+    <div className="MoviesList">
+      <ul>{movieItems}</ul>
+      <button onClick={handleReverseMovies}>Reverse List</button>
     </div>
   );
 }

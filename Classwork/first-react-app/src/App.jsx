@@ -11,6 +11,10 @@ import ComplexComment from "./components/ComplexComment";
 import Comment from "./components/Comment";
 import Callout from "./components/Callout";
 import MoviesList from "./components/MoviesList";
+import MoodChanger from "./components/Moodchanger";
+import BirthdayTranslator from "./components/BirthdayTranslator";
+import Weather from "./components/Weather";
+import Movie from "./components/Movie";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -89,7 +93,11 @@ function App() {
         <FullName first="Elon" last="Musk" />
       </Callout> */}
 
-      <MoviesList />
+      {/* <MoviesList /> */}
+      {/* <MoodChanger />
+      <BirthdayTranslator /> */}
+      <Weather />
+      <Movie />
     </>
   );
 }
