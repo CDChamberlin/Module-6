@@ -16,6 +16,7 @@ import Weather from "./components/Weather";
 import Movie from "./components/Movie";
 import LoginForm from "./components/LoginForm";
 import AddMovieForm from "./components/AddMovieForm";
+import ExplodingBomb from "./components/ExplodingBomb";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -95,6 +96,7 @@ function App() {
       </Callout> */}
 
       <MoviesList />
+      <ExplodingBomb></ExplodingBomb>
       {/* <MoodChanger />
       <BirthdayTranslator /> */}
       {/* <Weather />
