@@ -6,7 +6,6 @@ import ExampleComponent from "./components/exampleComponent";
 import PropsDisplayer from "./components/PropsDisplayer";
 import City from "./components/City";
 import Pet from "./components/Pet";
-import FullName from "./components/Name";
 import ComplexComment from "./components/ComplexComment";
 import Comment from "./components/Comment";
 import Callout from "./components/Callout";
@@ -15,6 +14,7 @@ import MoodChanger from "./components/Moodchanger";
 import BirthdayTranslator from "./components/BirthdayTranslator";
 import Weather from "./components/Weather";
 import Movie from "./components/Movie";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -96,8 +96,9 @@ function App() {
       {/* <MoviesList /> */}
       {/* <MoodChanger />
       <BirthdayTranslator /> */}
-      <Weather />
-      <Movie />
+      {/* <Weather />
+      <Movie /> */}
+      <LoginForm />
     </>
   );
 }
