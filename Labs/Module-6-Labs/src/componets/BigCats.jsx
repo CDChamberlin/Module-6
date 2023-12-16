@@ -1,7 +1,9 @@
 /*
     BigCats Component
 */
-import Card from "react-bootstrap/Card";
+import { useState } from "react";
+
+import SingleCat from "./SingleCat";
 
 function BigCats() {
   const cats = [
@@ -36,7 +38,7 @@ function BigCats() {
     },
     {
       name: "Snow leopard",
-      link: "https://i.natgeofe.com/k/e196909e-a9f9-4437-95db-7cd9a039254f/snow-leopard-fullbody_square.jpg,",
+      link: "https://i.natgeofe.com/k/e196909e-a9f9-4437-95db-7cd9a039254f/snow-leopard-fullbody_square.jpg",
     },
     {
       name: "Tiger",
@@ -45,18 +47,21 @@ function BigCats() {
   ];
 
   // Maps over array to find matching keys and add the new data.
-  const newCats = cats.map((cat) => {
+  const newCats = cats.map((cat, index) => {
     return {
       ...cat,
-      ...catImages.find((item) => item.name === cat.name),
+      ...catImages.find((item) => item.name === cat.name)
     };
   });
+  console.log(newCats)
+  const [currentBigCats, setCurrentBigCats] = useState(newCats)
   const bigCatsList = newCats.map((cat) => (
-    <SingleCat>
-      key = {cat.id}
+    <SingleCat
+      key = {cat.index}
       name = {cat.name}
       link = {cat.link}
-    </SingleCat>
+      latinName = {cat.latinName}
+    />
   ));
   return(
     <div className="BigCatsList">
@@ -65,15 +70,4 @@ function BigCats() {
   )
 }
 
-function SingleCat({ name, latinName, link }) {
-  return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={link} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>{latinName}</Card.Text>
-      </Card.Body>
-    </Card>
-  );
-}
 export default BigCats;
