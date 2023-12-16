@@ -32,10 +32,9 @@ function MoviesList(props) {
     />
   ));
   const handleReverseMovies = () => {
-    
     let newMovies = [...currentMovies];
-    newMovies.reverse(); 
-    setCurrentMovies(newMovies); 
+    newMovies.reverse();
+    setCurrentMovies(newMovies);
   };
   return (
     <div className="MoviesList">
@@ -44,5 +43,12 @@ function MoviesList(props) {
     </div>
   );
 }
+const handleUpdateMOvie = (movieID) => {
+  let updatedSynopsis = "Iconic heart-warming prison break movie";
+  let newMovies = currentMovies.map((movie) =>
+    movie.id === movieID ? { ...movie, synopsis: updatedSynopsis } : movie
+  );
+  setCurrentMovies(newMovies)
+};
 
 export default MoviesList;
