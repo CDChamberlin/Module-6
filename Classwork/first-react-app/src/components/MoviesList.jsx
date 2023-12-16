@@ -36,19 +36,30 @@ function MoviesList(props) {
     newMovies.reverse();
     setCurrentMovies(newMovies);
   };
+
+  const handleUpdateMovie = (movieID) => {
+    let updatedSynopsis = "Iconic heart-warming prison break movie";
+    let newMovies = currentMovies.map((movie) =>
+      movie.id === movieID ? { ...movie, synopsis: updatedSynopsis } : movie
+    );
+    setCurrentMovies(newMovies)
+  };
+
+  const handleSortMovies = () => {
+    let newMovies = [...currentMovies];
+    newMovies.sort((a, b) => a.title.localeCompare(b.title))
+    setCurrentMovies(newMovies)
+  }
+
   return (
     <div className="MoviesList">
       <ul>{movieItems}</ul>
       <button onClick={handleReverseMovies}>Reverse List</button>
+      <button onClick={() => handleUpdateMovie(1)}>Update Movie</button>
+      <button onClick={() => handleSortMovies}>Sort Movies</button>
     </div>
   );
 }
-const handleUpdateMOvie = (movieID) => {
-  let updatedSynopsis = "Iconic heart-warming prison break movie";
-  let newMovies = currentMovies.map((movie) =>
-    movie.id === movieID ? { ...movie, synopsis: updatedSynopsis } : movie
-  );
-  setCurrentMovies(newMovies)
-};
+
 
 export default MoviesList;
