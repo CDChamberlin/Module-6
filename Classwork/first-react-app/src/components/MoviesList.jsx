@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import Movie from "./Movie";
+import AddMovieFormUncontrolled from "./AddMovieFormUncontrolled";
 function MoviesList(props) {
   const movies = [
     {
@@ -50,6 +51,11 @@ function MoviesList(props) {
     newMovies.sort((a, b) => a.title.localeCompare(b.title))
     setCurrentMovies(newMovies)
   }
+  const handleAddMovie = (newMovie) => {
+    newMovie.id = currentMovies.length + 1; // unreliable but succinct
+    setCurrentMovies([...currentMovies, newMovie])
+   }
+   
 
   return (
     <div className="MoviesList">
@@ -57,6 +63,7 @@ function MoviesList(props) {
       <button onClick={handleReverseMovies}>Reverse List</button>
       <button onClick={() => handleUpdateMovie(1)}>Update Movie</button>
       <button onClick={() => handleSortMovies}>Sort Movies</button>
+      <AddMovieFormUncontrolled onAddMovie={handleAddMovie}/>
     </div>
   );
 }

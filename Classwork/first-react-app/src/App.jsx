@@ -15,6 +15,7 @@ import BirthdayTranslator from "./components/BirthdayTranslator";
 import Weather from "./components/Weather";
 import Movie from "./components/Movie";
 import LoginForm from "./components/LoginForm";
+import AddMovieForm from "./components/AddMovieForm";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -93,12 +94,13 @@ function App() {
         <FullName first="Elon" last="Musk" />
       </Callout> */}
 
-      {/* <MoviesList /> */}
+      <MoviesList />
       {/* <MoodChanger />
       <BirthdayTranslator /> */}
       {/* <Weather />
       <Movie /> */}
-      <LoginForm />
+      {/* <LoginForm /> */}
+
     </>
   );
 }
