@@ -2,8 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Greeting from './componets/Greeting'
-import BigCats from './componets/BigCats'
+import Greeting from './components/Greeting'
+import BigCats from './components/BigCats'
+import 'bootstrap/dist/css/bootstrap.min.css'; // Imports the Bootstrap CSS
 
 function App() {
   const [count, setCount] = useState(0)
