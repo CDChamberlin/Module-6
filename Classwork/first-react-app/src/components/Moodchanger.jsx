@@ -12,7 +12,7 @@ function MoodChanger() {
     setMood(newMood)
   }
   return (
-    <div className="MoodChanger componetBox">
+    <div className="MoodChanger componentBox">
       Current Mood: {mood}
       <button onClick={() => setMood("tired")}>Stay up Late</button>
       <button onClick={() => setMood("hungry")}>Skipped Lunch</button>

@@ -50,11 +50,12 @@ function BigCats() {
   const newCats = cats.map((cat, index) => {
     return {
       ...cat,
-      ...catImages.find((item) => item.name === cat.name)
+      ...catImages.find((item) => item.name === cat.name),
+      index: index,
     };
   });
-  console.log(newCats)
-  const [currentBigCats, setCurrentBigCats] = useState(newCats)
+  
+  //const [currentBigCats, setCurrentBigCats] = useState(newCats)
   const bigCatsList = newCats.map((cat) => (
     <SingleCat
       key = {cat.index}
