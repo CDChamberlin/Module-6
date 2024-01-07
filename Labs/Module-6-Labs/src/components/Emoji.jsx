@@ -1,9 +1,10 @@
 import { useState } from "react";
 function Emoji(props){
-    const [mood, setMood] = useState(props.symbol ? props.symbol : '&#128512;')
+    const [mood, setMood] = useState(props.symbol)
     const changeMood = () =>{
-    if (mood != "&#128542;"){
-        setMood("&#128542;")
+    if (mood != "😞"){
+        setMood("😞")
+
     }
     else
     setMood(props.symbol)
@@ -13,8 +14,8 @@ function Emoji(props){
         <>
         <span className="emoji"
         role="img"
-        aria-label={props.label ? props.label: ""}
-        aria-hidden={props.label ? false : true}>
+        aria-label={props.label}
+        aria-hidden={props.label}>
             {mood}
         </span>
         <button onClick={() => changeMood()}>Switch Mood</button>
@@ -23,6 +24,6 @@ function Emoji(props){
 }
 Emoji.defaultProps ={
     label: "Happy",
-    symbol: "&#128512;"
+    symbol: "😃",
 }
 export default Emoji;
