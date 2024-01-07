@@ -9,7 +9,6 @@ export default function NumberInput({
       <label htmlFor="num1" className="input-control">
         First Number:{" "}
       </label>
-      <br />
       <input
         type="text"
         id="num1"
@@ -18,10 +17,11 @@ export default function NumberInput({
         className="input-control"
         onChange={(e) => handleInputChange(e, "num1")}
       />
+      <br />
       <label htmlFor="num2" className="input-control">
         Second Number:{" "}
       </label>
-      <br />
+      
       <input
         type="text"
         id="num2"
@@ -30,6 +30,7 @@ export default function NumberInput({
         className="input-control"
         onChange={(e) => handleInputChange(e, "num2")}
       />
+      <br />
       <input
         type="button"
         value="Clear"

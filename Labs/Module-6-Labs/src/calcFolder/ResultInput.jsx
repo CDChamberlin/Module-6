@@ -5,7 +5,6 @@ export default function ResultInput({ result }) {
         <label htmlFor="result" className="input-control">
           Result
         </label>
-        <br />
         <input
           type="text"
           className="input-control"
