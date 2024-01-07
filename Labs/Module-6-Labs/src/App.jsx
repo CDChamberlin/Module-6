@@ -32,12 +32,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Greeting />
+      {/* <Greeting />
       <Greeting name= "Joey">
         <h3> A Shade Dragon Rogue</h3>
       </Greeting>
       <BigCats />
-      <Emoji symbol = "&#128530;" label = "Unamused" />
+      <Emoji symbol = "&#128530;" label = "Unamused" /> */}
     </>
   )
 }

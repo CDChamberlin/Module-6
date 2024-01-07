@@ -1,18 +1,70 @@
 export default function CalculatorApp() {
-  return(
-    <>
-    <section id="operator" class="row">
-      <section class="column">
-        <label for="result" class="input-control">Result</label><br />
-        <input
-          type="text"
-          class="input-control"
-          value=""
-          name="result"
-          id="result"
-        />
-        <br />
-      </section>
-    </>
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [operator, setOperator] = useState("+");
+  const [result, setResult] = useState("");
+
+  const handleOperatorChange = (e) => {
+    setOperator(e.target.value);
+  };
+
+  const handleInputChange = (e, inputType) => {
+    const value = e.target.value;
+    if (inputType === "num1") {
+      setNum1(value);
+    } else if (inputType === "num2") {
+      setNum2(value);
+    }
+  };
+
+  const handleCalculate = (e) => {
+    e.preventDefault();
+    // Perform calculation based on the selected operator
+    let calculatedResult;
+    switch (operator) {
+      case "+":
+        calculatedResult = parseFloat(num1) + parseFloat(num2);
+        break;
+      case "-":
+        calculatedResult = parseFloat(num1) - parseFloat(num2);
+        break;
+      case "x":
+        calculatedResult = parseFloat(num1) * parseFloat(num2);
+        break;
+      case "/":
+        calculatedResult = parseFloat(num1) / parseFloat(num2);
+        break;
+      default:
+        calculatedResult = "";
+    }
+    setResult(calculatedResult);
+  };
+
+  const handleReset = () => {
+    setNum1("");
+    setNum2("");
+    setResult("");
+  };
+
+  return (
+    <section id="calculator" className="row">
+      <OperatorsForm
+        operator={operator}
+        handleOperatorChange={handleOperatorChange}
+      />
+      <NumberInput
+        num1={num1}
+        num2={num2}
+        handleInputChange={handleInputChange}
+        handleReset={handleReset}
+      />
+      <input
+        type="button"
+        value="Equals"
+        className="form-submit"
+        onClick={handleCalculate}
+      />
+      <ResultInput result={result} />
+    </section>
   );
 }
