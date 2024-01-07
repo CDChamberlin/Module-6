@@ -4,6 +4,8 @@
 import { useState } from "react";
 
 import SingleCat from "./SingleCat";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 
 function BigCats() {
   const cats = [
@@ -50,24 +52,65 @@ function BigCats() {
   const newCats = cats.map((cat, index) => {
     return {
       ...cat,
-      ...catImages.find((item) => item.name === cat.name)
+      ...catImages.find((item) => item.name === cat.name),
+      index: index,
     };
   });
-  console.log(newCats)
-  const [currentBigCats, setCurrentBigCats] = useState(newCats)
-  const bigCatsList = newCats.map((cat) => (
+  const [currentBigCats, setCurrentBigCats] = useState(newCats);
+  // Button Functions
+  
+  const showAll = () => {
+    setCurrentBigCats(newCats);
+  };
+
+  const sort = (num = 1) => {
+    // num = -1 causes the array to sort in reverse alphabetical order
+    let filteredList = [...newCats].sort((a, b) => {
+      const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1 * num;
+      }
+      if (nameA > nameB) {
+        return 1 * num;
+      }
+
+      // names must be equal
+      return 0;
+    });
+
+    setCurrentBigCats(filteredList);
+  };
+  const genus = (Genus) => {
+    let filteredList = [...newCats].filter(
+      (cat) => cat.latinName.split(" ")[0] === Genus
+    );
+    console.log(filteredList)
+    setCurrentBigCats(filteredList);
+  };
+
+  // End of button functions
+  
+  const bigCatsList = currentBigCats.map((cat) => (
     <SingleCat
-      key = {cat.index}
-      name = {cat.name}
-      link = {cat.link}
-      latinName = {cat.latinName}
+      key={cat.index}
+      name={cat.name}
+      link={cat.link}
+      latinName={cat.latinName}
     />
   ));
-  return(
-    <div className="BigCatsList">
-        {bigCatsList}
-    </div>
-  )
+  return (
+    <>
+      <div className="BigCatsList">{bigCatsList}</div>
+      <ButtonGroup>
+        <Button onClick={() => sort()}>Sort Alphabetically</Button>
+        <Button onClick={() => sort(-1)}>Reverse Sort</Button>
+        <Button onClick={() => genus("Panthera")}>Panthera</Button>
+        <Button onClick={() => showAll()}>Show All</Button>
+        {/* May do selection */}
+      </ButtonGroup>
+    </>
+  );
 }
 
 export default BigCats;
