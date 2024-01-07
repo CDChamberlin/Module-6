@@ -6,6 +6,7 @@ import Greeting from './components/Greeting'
 import BigCats from './components/BigCats'
 import 'bootstrap/dist/css/bootstrap.min.css'; // Imports the Bootstrap CSS
 import Emoji from './components/Emoji'
+import CalculatorApp from './calcFolder/CalculatorApp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,12 +33,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Greeting />
+      {/* <Greeting />
       <Greeting name= "Joey">
         <h3> A Shade Dragon Rogue</h3>
       </Greeting>
       <BigCats />
-      <Emoji symbol = "&#128530;" label = "Unamused" />
+      <Emoji symbol = "&#128530;" label = "Unamused" /> */}
+      <CalculatorApp />
     </>
   )
 }
