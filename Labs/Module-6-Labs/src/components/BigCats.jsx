@@ -2,10 +2,14 @@
     BigCats Component
 */
 import { useState } from "react";
+import {v4 as uuidv4} from "uuid"
+
 
 import SingleCat from "./SingleCat";
+import AddCatForm from "./AddCatForm";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
+
 
 function BigCats() {
   const cats = [
@@ -50,15 +54,16 @@ function BigCats() {
 
   // Maps over array to find matching keys and add the new data.
   const newCats = cats.map((cat, index) => {
+    const uniqueId = uuidv4()
     return {
       ...cat,
       ...catImages.find((item) => item.name === cat.name),
-      index: index,
+      index: uniqueId,
     };
   });
   const [currentBigCats, setCurrentBigCats] = useState(newCats);
   // Button Functions
-  
+
   const showAll = () => {
     setCurrentBigCats(newCats);
   };
@@ -85,12 +90,12 @@ function BigCats() {
     let filteredList = [...newCats].filter(
       (cat) => cat.latinName.split(" ")[0] === Genus
     );
-    console.log(filteredList)
+    console.log(filteredList);
     setCurrentBigCats(filteredList);
   };
 
   // End of button functions
-  
+
   const bigCatsList = currentBigCats.map((cat) => (
     <SingleCat
       key={cat.index}
@@ -99,6 +104,13 @@ function BigCats() {
       latinName={cat.latinName}
     />
   ));
+
+  const handleAddCat = (newCat) => {
+    const uniqueId = uuidv4()
+    newCat.index = uniqueId; 
+    setCurrentBigCats([...currentBigCats, newCat])
+    }
+    
   return (
     <>
       <div className="BigCatsList">{bigCatsList}</div>
@@ -109,6 +121,7 @@ function BigCats() {
         <Button onClick={() => showAll()}>Show All</Button>
         {/* May do selection */}
       </ButtonGroup>
+      <AddCatForm onAddCat={handleAddCat}/>
     </>
   );
 }
