@@ -1,9 +1,6 @@
-export default function NumberInput({
-  num1,
-  num2,
-  handleInputChange,
-  handleReset,
-}) {
+import ResultInput from "./ResultInput";
+
+export default function NumberInput({ num1, num2, handleInputChange, result }) {
   return (
     <section className="column">
       <label htmlFor="num1" className="input-control">
@@ -21,7 +18,7 @@ export default function NumberInput({
       <label htmlFor="num2" className="input-control">
         Second Number:{" "}
       </label>
-      
+
       <input
         type="text"
         id="num2"
@@ -31,12 +28,7 @@ export default function NumberInput({
         onChange={(e) => handleInputChange(e, "num2")}
       />
       <br />
-      <input
-        type="button"
-        value="Clear"
-        className="form-submit"
-        onClick={handleReset}
-      />
+      <ResultInput result={result} />
     </section>
   );
 }

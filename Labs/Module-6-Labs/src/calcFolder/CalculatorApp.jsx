@@ -2,6 +2,7 @@ import { useState } from "react";
 import OperatorForm from "./OperatorForm";
 import NumberInput from "./NumberInput";
 import ResultInput from "./ResultInput";
+import "./CalculatorComponent.css";
 
 export default function CalculatorApp() {
   const [num1, setNum1] = useState("");
@@ -52,28 +53,34 @@ export default function CalculatorApp() {
   };
 
   return (
-    <section id="calculator" className="row">
-      
-      <ResultInput result={result} />
+    <section id="calculator" className="grid-container">
       <NumberInput
         num1={num1}
         num2={num2}
+        result={result}
         handleInputChange={handleInputChange}
-        handleReset={handleReset}
       />
-      
+
       <OperatorForm
         operator={operator}
         handleOperatorChange={handleOperatorChange}
       />
-      
+
       <input
+        id="Clear"
+        type="button"
+        value="Clear"
+        className="form-submit"
+        onClick={handleReset}
+      />
+
+      <input
+        id="Equals"
         type="button"
         value="Equals"
         className="form-submit"
         onClick={handleCalculate}
       />
-      
     </section>
   );
 }
