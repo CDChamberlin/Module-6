@@ -27,27 +27,6 @@ export default function AddCatForm({ onAddCat }) {
     onAddCat(Object.fromEntries(data));
   };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const data = new FormData(e.target);
-
-//     // Validate the image link
-//     const imageUrl = data.get("image");
-//     if (!isUrlValid(imageUrl)) {
-//       console.error("Invalid URL for image");
-//       return;
-//     }
-
-//     // Check if the URL points to an image or SVG
-//     const isImageOrSvg = await isImageOrSvgUrl(imageUrl);
-//     if (!isImageOrSvg) {
-//       console.error("Invalid URL. Please provide a valid URL pointing to an image or SVG.");
-//       return;
-//     }
-
-//     // Continue with adding the cat if both URL and content type are valid
-//     onAddCat(Object.fromEntries(data));
-//   };
   
   return (
     <div className="AddCatForm componentBox">
